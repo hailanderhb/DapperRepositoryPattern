@@ -17,6 +17,8 @@ namespace Blog
             ReadUsers(connection);
             ReadRoles(connection);
             ReadTags(connection);
+            //DeleteRole(connection);
+            //UpdateRole(connection);
             //UpdateUser(connection);
             //DeleteUser(connection);
             //ReadUser();
@@ -69,6 +71,23 @@ namespace Blog
             var repository = new Repository<User>(connection);
             var user = repository.Get(1);
             repository.Delete(user);
+
+        }
+
+        public static void UpdateRole(SqlConnection connection)
+        {
+            var repository = new Repository<Role>(connection);
+            var role = repository.Get(1);
+            role.Name = "Author Att";
+            repository.Update(role);
+
+        }
+
+        public static void DeleteRole(SqlConnection connection)
+        {
+            var repository = new Repository<Role>(connection);
+            var role = repository.Get(1);
+            repository.Delete(role);
 
         }
 
